@@ -8,6 +8,9 @@ use App\Common\Response;
 // 模板继承待完善
 class View
 {
+    //静态变量保存全局实例 --实现单例模式
+    private static $_instance = null;
+
     // 配置信息
     private $recompile    = false, 
             $templatePath = 'app/Views',
@@ -79,6 +82,14 @@ class View
 
         // 模板后缀
         $this->suffix = env('TEMPLATE_SUFFIX') ?: $this->suffix;
+    }
+
+    //静态方法，单例统一访问入口
+    static public function getInstance() {
+        if (is_null ( self::$_instance ) || isset ( self::$_instance )) {
+            self::$_instance = new self ();
+        }
+        return self::$_instance;
     }
 
     /**
