@@ -181,7 +181,7 @@ class View
             throw new Exception('模板文件不存在：'. $filepath, 10502);
         }
 
-        $compiled = $this->compilePath. $this->theme. $template. '.compile.php';
+        $compiled = $this->compilePath. $this->theme. $template.'.compile.php';
         if ($this->recompile or !file_exists($compiled) or (@filemtime($compiled) <= @filemtime($filepath))) {
             $this->_compile($filepath, $compiled);
         }

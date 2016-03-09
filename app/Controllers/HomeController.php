@@ -9,12 +9,10 @@ class HomeController extends BaseController
 {
     public function home()
     {
-        //$users = Users::find(1)->toArray();
-        $test = env('TEMPLATE_PATH');
-        $test = BASE_PATH.'１/'.$test.'/１3２';
+        $users = Users::find(3)->toArray();
         $tpl = new View();
-        $tpl->assign('test', $test);
-        $tpl->display('test');
+        $tpl->assign('test', $users);
+        $tpl->display('new.test');
         //var_dump($test);
     }
 }
