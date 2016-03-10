@@ -2,7 +2,6 @@
 
 namespace App\Common;
 
-use App\Common\Exception;
 use App\Common\Response;
 
 // 模板继承待完善
@@ -104,7 +103,7 @@ class View
     public function display($__template, $__output = true, $__status = 200)
     {
         if ( ! $__template) {
-            throw new Exception('未设置显示模板', 10501);
+            throw new \Exception('未设置显示模板', 10501);
         }
 
         $this->template(ltrim(str_replace($this->suffix, '', $__template), '/'));
@@ -189,7 +188,7 @@ class View
         $filepath = $this->templatePath. $this->theme. $template. $this->suffix;
 
         if ( ! file_exists($filepath)) {
-            throw new Exception('模板文件不存在：'. $filepath, 10502);
+            throw new \Exception('模板文件不存在：'. $filepath, 10502);
         }
 
         $compiled = $this->compilePath. $this->theme. $template.'.compile.php';
@@ -225,7 +224,7 @@ class View
     {
         $path = dirname($compiled);
         if ( ! is_dir($path) and ! mkdir($path, 0777, true)) {
-            throw new Exception('无法创建模板编译缓存目录',  10503);
+            throw new \Exception('无法创建模板编译缓存目录',  10503);
         }
 
         $template = file_get_contents($filepath);
@@ -250,7 +249,7 @@ class View
         $count = count($matches[0]);
 
         if ($count > 1) {
-            throw new Exception('模板编译错误：存在多个继承', 10504);
+            throw new \Exception('模板编译错误：存在多个继承', 10504);
         }
 
         if ($count > 0) {
@@ -283,7 +282,7 @@ class View
         }, $template);
 
         if ($sectionNum !== 0) {
-            throw new Exception('模板编译错误：section 标签不匹配', 10505);
+            throw new \Exception('模板编译错误：section 标签不匹配', 10505);
         }
 
         return $template;
@@ -343,7 +342,7 @@ class View
 
         // if 标签不对称
         if ($tagNum !== 0) {
-            throw new Exception('模板编译错误：if 标签不匹配', 10506);
+            throw new \Exception('模板编译错误：if 标签不匹配', 10506);
         }
         
         // for
@@ -361,7 +360,7 @@ class View
 
         // for 标签不对称
         if ($tagNum !== 0) {
-            throw new Exception('模板编译错误：for 标签不匹配', 10507);
+            throw new \Exception('模板编译错误：for 标签不匹配', 10507);
         }
 
         // loop
@@ -383,7 +382,7 @@ class View
 
         // loop 标签不对称
         if ($tagNum !== 0) {
-            throw new Exception('模板编译错误：loop 标签不匹配', 10508);
+            throw new \Exception('模板编译错误：loop 标签不匹配', 10508);
         }
 
         // function

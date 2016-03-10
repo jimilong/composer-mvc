@@ -11,7 +11,7 @@ class HomeController extends BaseController
         $users = Users::find(3)->toArray();
 
         $this->assign('test', $users);
-        $this->display('new.test');
+        $this->display('test');
         //var_dump($test);
     }
 }

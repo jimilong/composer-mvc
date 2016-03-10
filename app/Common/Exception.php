@@ -85,6 +85,8 @@ class Exception extends \Exception
         }
 
         Response::send();*/
+        Response::output(self::text($e), 'text', 500);
+        Response::send();
         exit(1);
     }
 
@@ -96,14 +98,21 @@ class Exception extends \Exception
      */
     public static function text($e)
     {
-        return sprintf(
+        /*return sprintf(
             '%s [ %s ]: %s ~ %s [ %d ]',
             get_class($e), 
             $e->getCode(), 
-            strip_tags($e->getMessage()), 
+            strip_tags($e->getMessage()),
             $e->getFile(), 
             $e->getLine()
-        );
+        );*/
+        echo get_class($e);
+        echo '['.$e->getCode().']';
+        echo ':';
+        echo strip_tags($e->getMessage());
+        echo '</br>';
+        echo $e->getFile();
+        echo '['.$e->getLine().']';
     }
 
     /**

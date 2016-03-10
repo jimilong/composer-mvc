@@ -29,3 +29,18 @@ try {
 } catch (Dotenv\Exception\InvalidPathException $e) {
     //
 }
+
+// 自定义　异常处理
+
+/*$level = env('DEBUG') ? (E_ALL ^ E_NOTICE ^ E_STRICT) : (E_ERROR | E_WARNING | E_PARSE);
+error_reporting($level);
+
+set_exception_handler(['App\Common\Exception', 'exceptionHandler']);
+
+if (version_compare(PHP_VERSION, '7.0.0', '>=')) {
+    set_error_handler(['App\Common\Exception', 'errorHandler'], $level);
+}
+unset($level);
+
+// 注册关闭执行函数
+register_shutdown_function('App\Common\Exception::shutdown');*/
