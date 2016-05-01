@@ -6,14 +6,14 @@ use App\Common\View;
 
 class BaseController
 {
-    protected $view = null;
+    //protected $view = null;
 
     public function __construct()
     {
-        $this->view = View::getInstance();
+        //$this->view = View::getInstance();
     }
 
-    protected function display($__template, $__output = true, $__status = 200)
+    /*protected function display($__template, $__output = true, $__status = 200)
     {
         $this->view->display($__template, $__output, $__status);
     }
@@ -21,5 +21,5 @@ class BaseController
     protected function assign($key = '', $val = null)
     {
         $this->view->assign($key, $val);
-    }
+    }*/
 }

@@ -91,6 +91,17 @@ class View
         return self::$_instance;
     }
 
+    //新封装ioc用
+    public function view($__template, $data = []){
+        if ($data) {
+            foreach ($data as $k => $v) {
+                $this->assign($k, $v);
+            }
+        }
+
+        $this->display($__template);
+    }
+
     /**
      * 显示页面或返回页面内容
      *

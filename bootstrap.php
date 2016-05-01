@@ -1,19 +1,28 @@
 <?php
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-
 define('BASE_PATH', __DIR__);
 
 // Autoload 自动载入
 require BASE_PATH.'/vendor/autoload.php';
 
+//env
+try {
+    (new Dotenv\Dotenv(__DIR__))->load();
+} catch (Dotenv\Exception\InvalidPathException $e) {
+    //
+}
+
+$app = new \App\Common\Application();
+
+$app->withEloquent(require BASE_PATH.'/config/database.php');
+
 // Eloquent ORM
 
-$capsule = new Capsule;
+/*$capsule = new Capsule;
 
 $capsule->addConnection(require BASE_PATH.'/config/database.php');
 
-$capsule->bootEloquent();
+$capsule->bootEloquent();*/
 
 // whoops 错误提示
 
@@ -23,12 +32,7 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
 $whoops->register();
 
-//env
-try {
-    (new Dotenv\Dotenv(__DIR__))->load();
-} catch (Dotenv\Exception\InvalidPathException $e) {
-    //
-}
+
 
 // 自定义　异常处理
 
@@ -44,3 +48,8 @@ unset($level);
 
 // 注册关闭执行函数
 register_shutdown_function('App\Common\Exception::shutdown');*/
+
+// 路由配置
+require BASE_PATH.'/app/routes.php';
+
+return $app;

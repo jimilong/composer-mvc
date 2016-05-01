@@ -1,15 +1,12 @@
 <?php
 
-use NoahBuscher\Macaw\Macaw;
-use Whoops\Exception;
-
-Macaw::get('fuck', function() {
+/*$app->get('fuck', function() {
     echo "成功！";
-});
+});*/
 
-Macaw::get('home', 'App\Controllers\HomeController@home');
+$app->get('home', 'App\Controllers\HomeController@home');
 
-Macaw::get('(:all)', function($fu) {
+/*Macaw::get('(:all)', function($fu) {
     echo '未匹配到路由<br>'.$fu;
 });
 
@@ -18,7 +15,7 @@ Macaw::$error_callback = function() {
 };
 
 Macaw::dispatch();
-exit;
+exit;*/
 
 /*Macaw::get('(:all)', function($fu) {
     echo '未匹配到路由<br>'.$fu;
@@ -39,4 +36,5 @@ exit;
 } catch (\Exception $e) {
     echo $e->getMessage();
 }*/
+
 
