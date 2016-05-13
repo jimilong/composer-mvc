@@ -2,6 +2,7 @@
     "require":{
         "noahbuscher/macaw": "dev-master",
         "illuminate/database": "*",
+        "illuminate/view": "5.2.*",
         "filp/whoops": "*",
         "vlucas/phpdotenv": "~2.2"
     },
@@ -15,11 +16,9 @@
     },
     "repositories": [
         {   
-            "packagist": false
-        },  
-        {   
             "type": "composer", 
-            "url": "http://packagist.cn"
-        }   
+            "url": "https://packagist.phpcomposer.com"
+        },
+        {"packagist": false}
     ]
 }
